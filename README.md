@@ -1,4 +1,7 @@
 # docker-jjb
+
+[![Build Status](https://travis-ci.org/rowancarr/docker-jjb.svg?branch=master)](https://travis-ci.org/rowancarr/docker-jjb)
+
 This image has been created for a number of reasons, the first is to generate RPM's for a Centos installation, and the second (which is more of a product of the first) to run jenkins-job-builder from inside a Docker container.
 
 ## Dependencies

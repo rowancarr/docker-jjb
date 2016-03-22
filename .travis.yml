@@ -13,10 +13,16 @@ script:
   - make test VERSION=$BUILD_VERSION
 after_success:
   - make tag VERSION=$BUILD_VERSION GH_TOKEN=$BUILD_KEY
-
 deploy:
+  skip_cleanup: true
   provider: packagecloud
-  repository: "rowancarr/rpm"
-  username: ""
-  token: "YOUR TOKEN"
-  dist: "YOUR DIST" # like 'ubuntu/precise', or 'centos/5', if pushing deb or rpms
+  repository: rowancarr/rpm
+  username:
+    secure: QekNw3Kj4TFPf6LvjD95ZQP6cOqcHEOzgr18qFFHg6lrJTXzLX+iByh1Gm4x6zgqjXUwPWznVE6tbxoHGtNk8eVdlKKmWcR7Z2hMVdAXKgG+I+SwSPAm4JysCIO5F+Uf18VMiZu3cAcA/9cLxmBzCvhVTVdrOPnNKic9lXJS8EgU6mHx0rI849h5wdVJkiNtePFgPi/f84nfXc8hJFLcT4iaqF9BijqXfvWO49O0SgYL93v8+iKmCSl0E3yANsxqHKTZBgUH3C27bUXJhBM33IYJMUNsaROuDxhvWQzrGOrQlNwG5UrNXSmump79MK0piIIJ206y/alF/WmEXh+/ZqvlvoBCLhjyWR+0lI45HubdFcwPPUAPQz4RSWhN/H1DhVrnIMznIEchAD6PsUr+zkcuTZ/1OYzIV5QYmJX6a/RQ0I0zKP0JuhbNv4sm6hG9uX6GzU/f0THKUoDG13/f7jAMykM+XIqA6++QWUGGH6Tyfyhare/ONlL2vktASuHkqqBzHIZOYhFbjEvDs1g71gv0Eie0jr8ssWHtZ+IpfhqR8qtl/IwP53QtvsijQjCJs+eX6d2Ckl4J+DG3VgCp6q+e8OQg581RQxnDgz1/Nnj6ObsecYeH5MpE63GT5FJ6/QLP/EsAk9lYmVgPj3kXbWgucpC23lRtVEpuf8ugPIw=
+  token:
+    secure: NZc9p45KrHFjjcJVacheb55LNfWUJNsNxgVPw1W6AXhvmkmtfQWdr5zSe3b1YOPhK5HmWRlJ01t9WNI7HpzR9oGNr8ydYZwBwvfSSXgjKZ5q6sXTGhePt5GmPw27JQkV2x0fvdGmWAm9d4BURFKjUAu4luCQWM1yFATGqbVVB9wOUFV5zJ6pDqLPay2kzlgeZZmmAdmbzNSnpnr2PZ8W5QjzADeoQ2atNsZ/dtKPmplsgUWbv7/9Hg6DxBrL400uLXo88V+y2ZFU2dtJnq41KbuiOyZHbhMEGsH/Af4bsEJPJ5R++nrMUpVw8ZGp2rgiNr78Ke40EXmoLw4jlus/ALC8qK7p+yx56uqU0L4en4SkEqx6D+RHAazdeHtsKykf4Rp4sMo/6TvkB9gP7uhdhrAmisbET9/F6SeKwl0YwPMmt8a+J91XyRRawi/YmZJqay8+2BJqsaRPSYz5808Hq2vBTYJF2eOwCyRHF7IGA9EwhZ+rde1Mt7fFb1PM/p7niwE5+0JoEeiR7ufY/Ydhosg879fPyET20VDRYeU1eHkQe4ugRjiAOkaCREhttwoWr0NxK5haMqIbbFHB5016Sb8HUmb9ZiGrGRiQcKoEl02XdvnK3gol1Rspj/WuKoheF3iFP/6QTaMG4sbo7p0jGQu7cxFTW+Dv/0aXdbzBaWI=
+  dist: 'centos/7'
+  local-dir: src
+  package_glob: *.rpm
+  on:
+    tags: true

@@ -11,6 +11,14 @@ build: clean
 test:
 	docker run --rm -i ${REGISTRY}/${IDENTIFIER}:${VERSION} sh -c 'which jenkins-jobs || echo "[FAIL] - ${IDENTIFIER} not installed" && echo "[PASS] - ${IDENTIFIER} installed"'
 
+tag:
+	@git config --local user.email "builds@travis-ci.com"
+	@git config --local user.name "Travis CI"
+	git tag ${VERSION} -a -m "Generated tag from TravisCI for build ${TRAVIS_BUILD_NUMBER}"
+	@git push -q https://${GH_TOKEN}@github.com/${REGISTRY}/${IDENTIFIER} --tags
+	@git config --local --unset user.email
+	@git config --local --unset user.name
+	
 deploy:
 	docker tag -f ${REGISTRY}/${IDENTIFIER}:${VERSION} ${REGISTRY}/${IDENTIFIER}:latest
 	docker push ${REGISTRY}/${IDENTIFIER}:${VERSION}
