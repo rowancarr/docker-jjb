@@ -20,7 +20,7 @@ tag:
 	@git config --local --unset user.name
 
 deploy:
-	package_cloud push --skip-errors rowancarr/rpm/el/7 src/*
+	package_cloud push --skip-errors rcops/jjb/el/7 src/*
 
 clean:
 	rm -rf src
