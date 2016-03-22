@@ -18,11 +18,9 @@ tag:
 	@git push -q https://${GH_TOKEN}@github.com/${REGISTRY}/${IDENTIFIER} --tags
 	@git config --local --unset user.email
 	@git config --local --unset user.name
-	
+
 deploy:
-	docker tag -f ${REGISTRY}/${IDENTIFIER}:${VERSION} ${REGISTRY}/${IDENTIFIER}:latest
-	docker push ${REGISTRY}/${IDENTIFIER}:${VERSION}
-	docker push ${REGISTRY}/${IDENTIFIER}:latest
+	package_cloud push --skip-errors rowancarr/rpm/el/7 src/*
 
 clean:
 	rm -rf src
