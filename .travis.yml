@@ -1,3 +1,4 @@
+language: ruby
 env:
   global:
   - BUILD_VERSION=0.1.$TRAVIS_BUILD_NUMBER
@@ -23,6 +24,6 @@ deploy:
     secure: NZc9p45KrHFjjcJVacheb55LNfWUJNsNxgVPw1W6AXhvmkmtfQWdr5zSe3b1YOPhK5HmWRlJ01t9WNI7HpzR9oGNr8ydYZwBwvfSSXgjKZ5q6sXTGhePt5GmPw27JQkV2x0fvdGmWAm9d4BURFKjUAu4luCQWM1yFATGqbVVB9wOUFV5zJ6pDqLPay2kzlgeZZmmAdmbzNSnpnr2PZ8W5QjzADeoQ2atNsZ/dtKPmplsgUWbv7/9Hg6DxBrL400uLXo88V+y2ZFU2dtJnq41KbuiOyZHbhMEGsH/Af4bsEJPJ5R++nrMUpVw8ZGp2rgiNr78Ke40EXmoLw4jlus/ALC8qK7p+yx56uqU0L4en4SkEqx6D+RHAazdeHtsKykf4Rp4sMo/6TvkB9gP7uhdhrAmisbET9/F6SeKwl0YwPMmt8a+J91XyRRawi/YmZJqay8+2BJqsaRPSYz5808Hq2vBTYJF2eOwCyRHF7IGA9EwhZ+rde1Mt7fFb1PM/p7niwE5+0JoEeiR7ufY/Ydhosg879fPyET20VDRYeU1eHkQe4ugRjiAOkaCREhttwoWr0NxK5haMqIbbFHB5016Sb8HUmb9ZiGrGRiQcKoEl02XdvnK3gol1Rspj/WuKoheF3iFP/6QTaMG4sbo7p0jGQu7cxFTW+Dv/0aXdbzBaWI=
   dist: 'centos/7'
   local-dir: src
-  package_glob: *.rpm
+  package_glob: '*.rpm'
   on:
     tags: true
